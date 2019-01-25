@@ -17,8 +17,8 @@ studentSchema.pre('remove', function(next) {
     next();
 })
 
-var Contact = mongoose.model('Student', studentSchema);
-module.exports = Contact;
+var Student = mongoose.model('Student', studentSchema);
+module.exports = Student;
 module.exports.get = function (callback, limit) {
-    Contact.find(callback).limit(limit);
+    Student.find(callback).limit(limit);
 }

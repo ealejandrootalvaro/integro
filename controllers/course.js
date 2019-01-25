@@ -82,17 +82,23 @@ exports.averageGrade = function (req, res) {
 }
 
 exports.delete = function(req, res) {
-    Course.deleteOne({_id: req.params.id}, function(err) {
+    Course.findById(req.params.id, function (err, course) {
         if (err) {
-            res.json({
-                status: "error",
-                message: err
-            });
+            res.send(err);
             return;
         }
-        res.json({
-            status: "success",
-            message: 'The course has been deleted'
+        course.remove(function(err) {
+            if (err) {
+                res.json({
+                    status: "error",
+                    message: err
+                });
+                return;
+            }
+            res.json({
+                status: "success",
+                message: 'The course has been removed'
+            })
         })
     })
 }

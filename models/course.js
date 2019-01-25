@@ -7,11 +7,6 @@ var courseSchema = mongoose.Schema({
     }
 })
 
-courseSchema.pre('remove', function(next) {
-    Grade.remove({courseId: this._id}).exec();
-    next();
-});
-
 var Course = mongoose.model('Course', courseSchema);
 module.exports = Course;
 module.exports.get = function (callback, limit) {
