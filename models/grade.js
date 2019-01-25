@@ -25,26 +25,6 @@ var gradeSchema = Schema({
     }
 })
 
-gradeSchema.pre('save', function (next, req) {
-    Student.findOne({_id: this.studentId}, function(err, found) {
-        if (found) {
-            return next();
-        } else {
-            return next(new Error('Student not found'));
-        }
-    })
-});
-
-gradeSchema.pre('save', function (next, req) {
-    Course.findOne({_id: this.studentId}, function(err, found) {
-        if (found) {
-            return next();
-        } else {
-            return next(new Error('Course not found'));
-        }
-    })
-});
-
 var Grade = mongoose.model('Grade', gradeSchema);
 module.exports = Grade;
 module.exports.get = function (callback, limit) {
