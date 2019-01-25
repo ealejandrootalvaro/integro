@@ -1,5 +1,5 @@
 var Student = require('../models/student');
-
+var utils = require('../global/utils');
 exports.index = function (req, res) {
     Student.get(function (err, students) {
         if (err) {

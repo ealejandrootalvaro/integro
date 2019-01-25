@@ -1,5 +1,5 @@
 var Grade = require('../models/grade');
-
+var utils = require('../global/utils');
 exports.index = function (req, res) {
     Grade.get(function (err, grades) {
         if (err) {
